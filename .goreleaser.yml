@@ -6,6 +6,7 @@ builds:
   env:
     - CGO_ENABLED=0
   main: ./cmd/gws/main.go
+  binary: gws
 archive:
   replacements:
     darwin: Darwin
