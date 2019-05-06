@@ -1,9 +1,13 @@
 package server
 
 import (
+	"crypto/hmac"
+	"crypto/sha1"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"os/exec"
+	"strings"
 
 	"github.com/gorilla/mux"
 )
@@ -47,8 +51,19 @@ func (s *Server) Start() {
 // Handler ...
 func (s *Server) Handler(w http.ResponseWriter, r *http.Request) {
 	if s.secret != "" {
-		secret := r.Header.Get("X-Hub-Signature")
-		if s.secret != secret {
+		headerSig := r.Header.Get("X-Hub-Signature")
+
+		b, err := ioutil.ReadAll(r.Body)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			fmt.Fprintf(w, err.Error())
+			return
+		}
+
+		sig := hmacSig(s.secret, []byte(strings.TrimSpace(string(b))))
+		expectedSig := fmt.Sprintf("sha1=%x", sig)
+		fmt.Println(expectedSig)
+		if headerSig != expectedSig {
 			w.WriteHeader(http.StatusUnauthorized)
 			fmt.Fprintf(w, http.StatusText(http.StatusUnauthorized))
 			return
@@ -64,4 +79,11 @@ func (s *Server) Handler(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusOK)
 	w.Write(out)
+}
+
+func hmacSig(secret string, message []byte) []byte {
+	hash := hmac.New(sha1.New, []byte(secret))
+	hash.Write(message)
+
+	return hash.Sum(nil)
 }

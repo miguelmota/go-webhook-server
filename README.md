@@ -7,20 +7,25 @@
 Installing from Go:
 
 ```bash
-go get -u github.com/miguelmota/go-webhook-server/cmd/gws
+$ go get -u github.com/miguelmota/go-webhook-server/cmd/gws
 ```
 
 Installing pre-compiled binary:
 
 ```bash
-$ wget https://github.com/miguelmota/go-webhook-server/releases/download/v0.0.4/gws_0.0.4_Linux_x86_64.tar.gz
-$ tar -xvzf gws_0.0.4_Linux_x86_64.tar.gz gws
+$ wget https://github.com/miguelmota/go-webhook-server/releases/download/v0.0.5/gws_0.0.5_Linux_x86_64.tar.gz
+$ tar -xvzf gws_0.0.5_Linux_x86_64.tar.gz gws
 $ chmod +x gws
 $ sudo mv gws /usr/local/bin/gws
+```
+
+## Usage
+
+```bash
 $ gws --help
 ```
 
-## Get started
+## Getting started
 
 ```bash
 $ export SECRET_TOKEN=mysecret
@@ -31,7 +36,7 @@ Listening on port 8080
 ```
 
 ```bash
-$ curl "http://localhost:8080/postreceive" -X 'X-Hub-Signature: mysecret'
+$ curl "http://localhost:8080/postreceive" -X 'X-Hub-Signature: sha1=33f9d709782f62b8b4a0178586c65ab098a39fe2'
 hello world
 ```
 
