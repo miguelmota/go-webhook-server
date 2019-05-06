@@ -1,5 +1,5 @@
 builds:
-  - main: ./cmd/gws/main.go
+  - main: cmd/gws/main.go
     goos:
       - windows
       - darwin
