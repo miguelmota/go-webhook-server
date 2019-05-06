@@ -13,8 +13,8 @@ $ go get -u github.com/miguelmota/go-webhook-server/cmd/gws
 Installing pre-compiled binary:
 
 ```bash
-$ wget https://github.com/miguelmota/go-webhook-server/releases/download/v0.0.5/gws_0.0.5_Linux_x86_64.tar.gz
-$ tar -xvzf gws_0.0.5_Linux_x86_64.tar.gz gws
+$ wget https://github.com/miguelmota/go-webhook-server/releases/download/v0.0.6/gws_0.0.6_Linux_x86_64.tar.gz
+$ tar -xvzf gws_0.0.6_Linux_x86_64.tar.gz gws
 $ chmod +x gws
 $ sudo mv gws /usr/local/bin/gws
 ```

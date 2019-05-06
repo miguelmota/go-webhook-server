@@ -52,7 +52,6 @@ func (s *Server) Start() {
 func (s *Server) Handler(w http.ResponseWriter, r *http.Request) {
 	if s.secret != "" {
 		headerSig := r.Header.Get("X-Hub-Signature")
-
 		b, err := ioutil.ReadAll(r.Body)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
@@ -62,7 +61,6 @@ func (s *Server) Handler(w http.ResponseWriter, r *http.Request) {
 
 		sig := hmacSig(s.secret, []byte(strings.TrimSpace(string(b))))
 		expectedSig := fmt.Sprintf("sha1=%x", sig)
-		fmt.Println(expectedSig)
 		if headerSig != expectedSig {
 			w.WriteHeader(http.StatusUnauthorized)
 			fmt.Fprintf(w, http.StatusText(http.StatusUnauthorized))
