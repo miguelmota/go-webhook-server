@@ -1,4 +1,0 @@
-34b164a41619299fbcc97705ea4f0254e25d598cd2584772c279ef7d2a03bd56  go-webhook-server_0.0.1_darwin_amd64.tar.gz
-e8dc1b4c1e506caad7bc216a4cb483194c583eabf7aeb400e2e7160c6e799af8  go-webhook-server_0.0.1_linux_386.tar.gz
-7a766b4bc49f10e0e97b378b56c70c58a3ebf4f0e2cdc16ff49e200dd9b7597a  go-webhook-server_0.0.1_linux_amd64.tar.gz
-e4bd2bba4b30961b2b4bf1c6caf1ba08fea67d20ac257a85db73cddc80b3b2d3  go-webhook-server_0.0.1_darwin_386.tar.gz
