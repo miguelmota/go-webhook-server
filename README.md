@@ -4,8 +4,18 @@
 
 ## Install
 
+Installing from Go:
+
 ```bash
 go get -u github.com/miguelmota/go-webhook-server/cmd/gws
+```
+
+Installing pre-compiled binary:
+
+```bash
+$ wget https://github.com/miguelmota/go-webhook-server/releases/download/v0.0.3/go-webhook-server_0.0.3_Linux_x86_64.tar.gz
+$ tar -xvzf go-webhook-server_0.0.3_Linux_x86_64.tar.gz gws
+$ gws --help
 ```
 
 ## Get started
