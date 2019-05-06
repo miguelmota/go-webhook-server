@@ -5,6 +5,7 @@
 ## Install
 
 ```bash
+go get -u github.com/miguelmota/go-webhook-server/cmd/gws
 ```
 
 ## Get started
