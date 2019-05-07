@@ -47,6 +47,19 @@ $ curl "http://localhost:8080/postreceive" -X 'X-Hub-Signature: sha1=33f9d709782
 hello world
 ```
 
+Example of how to use bash script as the command:
+
+```bash
+$ cat > command.sh
+#!/bin/bash
+echo 'hello world'
+^C
+
+$ chmod +x command.sh
+
+$ gws -path=/postreceive -command=$(pwd)/command.sh
+```
+
 ## License
 
 [MIT](LICENSE)
