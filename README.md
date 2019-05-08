@@ -2,7 +2,7 @@
 
 > A simple server to receive webhooks and execute commands
 
-[![License](http://img.shields.io/badge/license-Apache-blue.svg)](https://raw.githubusercontent.com/miguelmota/go-webhook-server/master/LICENSE)
+[![License](http://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/miguelmota/go-webhook-server/master/LICENSE)
 [![Build Status](https://travis-ci.org/miguelmota/go-webhook-server.svg?branch=master)](https://travis-ci.org/miguelmota/go-webhook-server)
 [![Go Report Card](https://goreportcard.com/badge/github.com/miguelmota/go-webhook-server?)](https://goreportcard.com/report/github.com/miguelmota/go-webhook-server)
 [![GoDoc](https://godoc.org/github.com/miguelmota/go-webhook-server?status.svg)](https://godoc.org/github.com/miguelmota/go-webhook-server)
