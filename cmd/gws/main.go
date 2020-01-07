@@ -13,6 +13,7 @@ func main() {
 	var port uint = 8080
 	var command string
 	var secret string
+	var method = "GET"
 	var path = "/"
 
 	if os.Getenv("PORT") != "" {
@@ -34,6 +35,7 @@ func main() {
 	flag.StringVar(&command, "command", command, "Command")
 	flag.StringVar(&path, "path", path, "Path")
 	flag.StringVar(&secret, "secret", secret, "Secret")
+	flag.StringVar(&method, "method", method, "Method")
 	flag.Parse()
 
 	svr := server.NewServer(&server.Config{
@@ -41,6 +43,7 @@ func main() {
 		Path:    path,
 		Command: command,
 		Secret:  secret,
+		Method:  method,
 	})
 
 	svr.Start()

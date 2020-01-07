@@ -57,7 +57,7 @@ echo 'hello world'
 
 $ chmod +x command.sh
 
-$ gws -path=/postreceive -command=$(pwd)/command.sh
+$ gws -method=POST -path=/postreceive -command=$(pwd)/command.sh
 ```
 
 ## License

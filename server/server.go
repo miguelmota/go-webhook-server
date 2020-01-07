@@ -15,6 +15,8 @@ import (
 // Server ...
 type Server struct {
 	r       *mux.Router
+	method  string
+	path    string
 	port    uint
 	command string
 	secret  string
@@ -22,9 +24,10 @@ type Server struct {
 
 // Config ...
 type Config struct {
+	Method  string
+	Path    string
 	Port    uint
 	Command string
-	Path    string
 	Secret  string
 }
 
@@ -33,12 +36,17 @@ func NewServer(config *Config) *Server {
 	r := mux.NewRouter()
 	s := &Server{
 		r:       r,
+		method:  strings.ToUpper(config.Method),
 		port:    config.Port,
+		path:    config.Path,
 		command: config.Command,
 		secret:  config.Secret,
 	}
-	r.HandleFunc(config.Path, s.Handler)
-	fmt.Printf("Registered path %s to run command %q\n", config.Path, config.Command)
+
+	r.HandleFunc(config.Path, s.Handler).Methods(s.method)
+	fmt.Printf("Method: %s\n", s.method)
+	fmt.Printf("Path: %s\n", s.path)
+	fmt.Printf("Command: %s\n", s.command)
 	return s
 }
 
