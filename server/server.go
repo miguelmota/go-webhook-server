@@ -58,15 +58,15 @@ func (s *Server) Start() {
 
 // Handler ...
 func (s *Server) Handler(w http.ResponseWriter, r *http.Request) {
+	b, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		fmt.Fprintf(w, err.Error())
+		return
+	}
+
 	if s.secret != "" {
 		headerSig := r.Header.Get("X-Hub-Signature")
-		b, err := ioutil.ReadAll(r.Body)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			fmt.Fprintf(w, err.Error())
-			return
-		}
-
 		sig := hmacSig(s.secret, []byte(strings.TrimSpace(string(b))))
 		expectedSig := fmt.Sprintf("sha1=%x", sig)
 		if headerSig != expectedSig {
@@ -76,7 +76,8 @@ func (s *Server) Handler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	out, err := exec.Command("bash", "-c", s.command).Output()
+	cmd := fmt.Sprintf("echo %q | %s", string(b), s.command)
+	out, err := exec.Command("bash", "-c", cmd).Output()
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, err.Error())
