@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"os"
 	"strconv"
@@ -46,5 +47,8 @@ func main() {
 		Method:  method,
 	})
 
-	svr.Start()
+	if err := svr.Start(); err != nil {
+		fmt.Printf("ERROR: %s\n", err)
+		os.Exit(1)
+	}
 }
