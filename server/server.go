@@ -53,7 +53,7 @@ func NewServer(config *Config) *Server {
 // Start ...
 func (s *Server) Start() error {
 	fmt.Printf("Listening on port %d\n", s.port)
-	return http.ListenAndServe(fmt.Sprintf(":%d", s.port), s.r)
+	return http.ListenAndServe(fmt.Sprintf("0.0.0.0:%d", s.port), s.r)
 }
 
 // Handler ...
